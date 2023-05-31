@@ -3,7 +3,8 @@ API
 MediaR
 
 DB
-InMemory with EF
+local sql
+EF Core + migration
 
 CI/CD
 Actions
