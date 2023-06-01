@@ -23,7 +23,6 @@ Apply migrations to database via command lines
 dotnet ef database update --project ApiWorkflow.Infrastructure --startup-project ApiWorkflow
 ```
 
-
 ## CI/CD
 Actions
 
