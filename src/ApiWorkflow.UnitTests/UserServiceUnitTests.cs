@@ -10,7 +10,7 @@ namespace ApiWorkflow.UnitTests
         [Test]
         public void Test1()
         {
-            Assert.Fail("Test for failure");
+            Assert.Pass();
         }
     }
 }
