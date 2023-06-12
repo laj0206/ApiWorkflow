@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  net build:
 
     runs-on: ubuntu-latest
 
@@ -23,6 +23,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+  
+  docker build:
+    runs-on: ubuntu-latest
+
+    steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag apiworkflow:$(date +%s)
+      run: docker build . --file src/Dockerfile --tag apiworkflow:$(date +%s)
