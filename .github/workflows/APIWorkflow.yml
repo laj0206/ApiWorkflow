@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  net build:
+  netbuild:
 
     runs-on: ubuntu-latest
 
@@ -24,7 +24,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
   
-  docker build:
+  dockerbuild:
     runs-on: ubuntu-latest
 
     steps:
