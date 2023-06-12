@@ -4,7 +4,7 @@ WORKDIR /src
 COPY . .
 
 WORKDIR "/src/ApiWorkflow"
-RUN dotnet restore . 
+RUN dotnet restore ApiWorkflow.csproj 
 RUN dotnet build . -c Release --no-restore
 
 FROM build AS publish
