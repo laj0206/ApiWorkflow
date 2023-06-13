@@ -3,12 +3,12 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["src/ApiWorkflow/ApiWorkflow.csproj", "src/ApiWorkflow/"]
-COPY ["src/ApiWorkflow.Infrastructure/ApiWorkflow.Infrastructure.csproj", "src/ApiWorkflow.Infrastructure/"]
-RUN dotnet restore "src/ApiWorkflow/ApiWorkflow.csproj"
+WORKDIR /source
+COPY ["src/ApiWorkflow/ApiWorkflow.csproj", "ApiWorkflow/"]
+COPY ["src/ApiWorkflow.Infrastructure/ApiWorkflow.Infrastructure.csproj", "ApiWorkflow.Infrastructure/"]
+RUN dotnet restore "ApiWorkflow/ApiWorkflow.csproj"
 COPY . .
-WORKDIR "/src/src/ApiWorkflow"
+WORKDIR "/source/ApiWorkflow"
 RUN dotnet build "ApiWorkflow.csproj" -c Release --no-restore -o /app/build
 
 FROM build AS publish
