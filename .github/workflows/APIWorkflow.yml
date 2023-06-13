@@ -1,7 +1,4 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+name: .NET and Docker build
 
 on:
   push:
@@ -10,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  netbuild:
 
     runs-on: ubuntu-latest
 
@@ -26,3 +23,11 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+  
+  dockerbuild:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file src/Dockerfile --tag apiworkflow:$(date +%s)
