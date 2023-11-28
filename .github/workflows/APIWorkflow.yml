@@ -30,4 +30,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file src/Dockerfile --tag apiworkflow:$(date +%s)
+      run: docker build . --file src/Dockerfile --tag apiworkflow:${{ github.run_number }}
+  
+  push-docker-image:
+    needs: dockerbuild
+    uses: ./.github/workflows/reusable-push-docker-image-workflow.yml
+    with: 
+      image_name: 'apiworkflow'
+      image_tag: ${{ github.run_number }}
