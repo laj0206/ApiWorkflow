@@ -1,0 +1,24 @@
+version: 2
+
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      Nunit:
+        patterns:
+          - "NUnit*"
+        update-types:
+          - "minor"
+          - "patch"
+      EFCore:
+        patterns:
+          - "Microsoft.EntityFrameworkCore*"
+        update-types:
+          - "minor"
+          - "patch"
+    commit-message:      
+      prefix: "Package Dependencies"
+    # Temporarily disable PR limit, till initial dependency update goes through
+    open-pull-requests-limit: 100
